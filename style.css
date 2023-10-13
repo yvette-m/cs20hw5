@@ -1,0 +1,151 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: 
+    linear-gradient(
+        hsl(197, 4%, 31%),
+        hsl(198, 11%, 47%),
+        rgb(134, 117, 117),
+        rgb(91, 73, 73)
+    )
+;
+}
+
+:root {
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size) *.9);
+}
+
+.board {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 1px solid rgb(226, 178, 44);
+    background-color: rgb(99, 69, 69);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: none;
+}
+
+.cell:nth-child(3n + 1) {
+    border-left: none;
+}
+
+.cell:nth-child(3n + 3) {
+    border-right: none;
+}
+
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7) {
+    border-bottom: none;
+}
+
+.cell.x,
+.cell.o {
+    cursor: not-allowed;
+}
+
+.cell.x::before,
+.cell.x::after {
+    content: '';
+    position: absolute;
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+    background-color: rgb(33, 44, 55);
+}
+
+.cell.x::before {
+    transform: rotate(45deg);
+}
+
+.cell.x::after {
+    transform: rotate(-45deg);
+}
+
+.cell.o::before,
+.cell.o::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgb(136, 144, 151);
+}
+
+.cell.o::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+}
+
+.cell.o::after {
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background-color:rgb(99, 69, 69);
+}
+
+h1 {
+    font-size: 50px;
+    font-family: cursive;
+    color:rgb(231, 165, 43) ;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 30px;
+    font-family: cursive;
+    color: rgb(231, 165, 43);
+}
+
+h3 {
+    font-size: 30px;
+    font-family: cursive;
+    color: rgb(63, 22, 22);
+    margin: 0;
+}
+
+.container {
+    padding: 40px;
+    height: 90vh;
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    flex-direction: column;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color:rgb(231, 165, 43);
+    color: antiquewhite;
+    border-color: brown;
+    font-size: 18px;
+    transition: 200ms transform;
+    font-weight: 600;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+}
